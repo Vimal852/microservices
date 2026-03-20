@@ -7,9 +7,10 @@ namespace Application.Interfaces
     public interface ICompanyService
     {
         Task AddAsync(CompanyDTOs company);
-        Task<Company?> GetCompanyAsync();
+        Task<List<Company>> GetCompanyAsync();
         Task<Company?> GetCompanyByIdAsync(int id);
-        Task<Company> DeleteCompanyByIdAsync(int id);
+        Task<Company> DeleteCompanybyidAsync(int id);
         Task UpdateAsync(Company company);
+
     }
 }

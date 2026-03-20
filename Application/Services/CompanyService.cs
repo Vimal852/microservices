@@ -26,47 +26,38 @@ namespace Application.Services
             await repo.SaveChangesAsync();
         }
 
-        public Task<Company> DeleteCompanyByIdAsync(int id)
+        public async Task<Company> DeleteCompanybyidAsync(int id)
         {
-            throw new NotImplementedException();
+
+           await repo.DeleteCompanybyidAsync(id);
+                await repo.SaveChangesAsync();
+                return new Company();
         }
 
-        // baki methods bhi yahan implement kar...
 
 
-        public Task<Company> deletecompnaybyidAsync(int id)
+        public async Task<List<Company>> GetCompanyAsync()
         {
-            throw new NotImplementedException();
+            return await repo.GetCompanyAsync();
         }
 
-        public Task<Company?> GetCompanyAsync()
+        public async Task<Company?> GetCompanyByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            await repo.GetCompanyByIdAsync(id);
+            return new Company();
         }
 
-        public Task<Company?> GetCompanyByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Company?> GetCompnayAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Company?> GetCompnaybyidAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
+  
 
         public Task SaveChangesAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task UpdateAsync(Company company)
+        public async Task UpdateAsync(Company company)
         {
-            throw new NotImplementedException();
+            await repo.UpdateAsync(company);
+                await repo.SaveChangesAsync();
         }
     }
 }

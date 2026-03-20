@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces;
 using Domain.Modal;
 using Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,19 +16,30 @@ namespace Infrastructure.Repositories
         
 
 
-        public Task<Company> deletecompnaybyidAsync(int id)
+        public async Task<Company> DeleteCompanybyidAsync(int id)
         {
-            throw new NotImplementedException();
+            var company = await db.Company.FindAsync(id);
+
+            if (company == null)
+            {
+                return null; 
+            }
+
+            db.Company.Remove(company);
+            await db.SaveChangesAsync();
+
+            return company;
         }
 
-        public Task<Company?> GetCompnayAsync()
+
+        public async Task<List<Company>> GetCompanyAsync()
         {
-            throw new NotImplementedException();
+            return await db.Company.ToListAsync();
         }
 
-        public Task<Company?> GetCompnaybyidAsync(int id)
+        public async Task<Company?> GetCompanyByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await db.Company.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public Task SaveChangesAsync() => db.SaveChangesAsync();
@@ -35,7 +47,8 @@ namespace Infrastructure.Repositories
 
         public Task UpdateAsync(Company company)
         {
-            throw new NotImplementedException();
+            db.Company.Update(company);
+            return Task.CompletedTask;
         }
     }
 }
