@@ -43,11 +43,10 @@ namespace Application.Services
 
         public async Task<Company?> GetCompanyByIdAsync(int id)
         {
-            await repo.GetCompanyByIdAsync(id);
-            return new Company();
+            return await repo.GetCompanyByIdAsync(id);
         }
 
-  
+
 
         public Task SaveChangesAsync()
         {

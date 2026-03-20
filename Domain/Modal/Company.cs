@@ -1,28 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Modal
 {
+    [Table("Company", Schema = "public")]
     public class Company
     {
-        public int Id { get; set; }
-        public string? CompanyName { get; set; }
-        public int Time { get; set; }
-        public string? Email { get; set; }
-        public string? PhoneNumber { get; set; }
-        public string? Website { get; set; }
-        public string? Address { get; set; }
-        public string? City { get; set; }
-        public string? Country { get; set; }
-        public string? LogoUrl { get; set; }
-        public string? SubscriptionPlan { get; set; }
-        public bool IsActive { get; set; } = true;
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public DateTime? UpdatedAt { get; set; }
+        [Column("Id")] public int Id { get; set; }
+        [Column("CompanyName")] public string? CompanyName { get; set; }
+        [Column("Time")] public int Time { get; set; }
+        [Column("Email")] public string? Email { get; set; }
+        [Column("PhoneNumber")] public string? PhoneNumber { get; set; }
+        [Column("Website")] public string? Website { get; set; }
+        [Column("Address")] public string? Address { get; set; }
+        [Column("City")] public string? City { get; set; }
+        [Column("Country")] public string? Country { get; set; }
+        [Column("LogoUrl")] public string? LogoUrl { get; set; }
+        [Column("SubscriptionPlan")] public string? SubscriptionPlan { get; set; }
+        [Column("IsActive")] public bool IsActive { get; set; } = true;
+        [Column("CreatedAt")] public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        [Column("UpdatedAt")] public DateTime? UpdatedAt { get; set; }
+
         public ICollection<User> Users { get; set; } = [];
     }
 }
